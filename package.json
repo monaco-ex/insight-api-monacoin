@@ -1,13 +1,17 @@
 {
-  "name": "insight-bitcore-api",
-  "description": "An open-source bitcoin blockchain API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the bitcoin network and build your own services with it.",
+  "name": "insight-monacore-api",
+  "description": "An open-source monacoin blockchain API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the monacoin network and build your own services with it.",
   "version": "0.2.10",
   "author": {
-    "name": "Ryan X Charles",
-    "email": "ryan@bitpay.com"
+    "name": "Mona Tore",
+    "email": "monatr.jp@gmail.com"
   },
-  "repository": "git://github.com/bitpay/insight-api.git",
+  "repository": "git://github.com/monatr/insight-monacore-api.git",
   "contributors": [
+    {
+      "name": "Ryan X Charles",
+      "email": "ryan@bitpay.com"
+    },
     {
       "name": "Matias Alejo Garcia",
       "email": "ematiu@gmail.com"
@@ -30,18 +34,18 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/bitpay/insight-api/issues"
+    "url": "https://github.com/monatr/insight-monacore-api/issues"
   },
-  "homepage": "https://github.com/bitpay/insight-api",
+  "homepage": "https://github.com/monatr/insight-monacore-api",
   "license": "MIT",
   "keywords": [
     "insight",
     "insight api",
     "blockchain",
-    "bitcoin api",
+    "monacoin api",
     "blockchain api",
     "json",
-    "bitcore"
+    "monacore"
   ],
   "engines": {
     "node": "*"
@@ -54,7 +58,7 @@
     "async": "*",
     "base58-native": "0.1.2",
     "bignum": "*",
-    "bitcore": "git://github.com/bitpay/bitcore.git#aa41c70cff2583d810664c073a324376c39c8b36",
+    "monacore": "git://github.com/visvirial/monacore.git",
     "bufferput": "git://github.com/bitpay/node-bufferput.git",
     "buffertools": "*",
     "commander": "^2.3.0",

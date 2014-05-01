@@ -1,31 +1,31 @@
 # *insight API*
 
-*insight API* is an open-source bitcoin blockchain REST
+*insight API* is an open-source monacoin blockchain REST
 and websocket API. Insight API runs in NodeJS and uses LevelDB for storage. 
 
 This is a backend-only service. If you're looking for the web frontend application,
-take a look at https://github.com/bitpay/insight.
+take a look at https://github.com/visvirial/insight-monacore.
 
-*Insight API* allows to develop bitcoin-related applications (such as wallets) that 
-require certain information from the blockchain that bitcoind does not provide.
+*Insight API* allows to develop monacoin-related applications (such as wallets) that 
+require certain information from the blockchain that monacoind does not provide.
 
 A blockchain explorer front-end has been developed on top of *Insight API*. It can
-be downloaded at [Github Insight Repository](https://github.com/bitpay/insight).
+be downloaded at [Github Insight Repository](https://github.com/visvirial/insight-monacore).
 
 
 ## Prerequisites
 
-* **bitcoind** - Download and Install [Bitcoin](http://bitcoin.org/en/download)
+* **monacoind** - Download and Install [Monacoin](http://monacoin.org/en/download.html)
 
-*insight API* needs a *trusted* bitcoind node to run. *insight API* will connect to the node
-through the RPC API, bitcoin peer-to-peer protocol, and will even read its raw block .dat files for syncing.
+*insight API* needs a *trusted* monacoind node to run. *insight API* will connect to the node
+through the RPC API, monacoin peer-to-peer protocol, and will even read its raw block .dat files for syncing.
 
-Configure bitcoind to listen to RPC calls and set `txindex` to true.
-The easiest way to do this is by copying `./etc/bitcoind/bitcoin.conf` to your
-bitcoin data directory (usually `~/.bitcoin` on Linux, `%appdata%\Bitcoin\` on Windows,
+Configure monacoind to listen to RPC calls and set `txindex` to true.
+The easiest way to do this is by copying `./etc/monacoind/monacoin.conf` to your
+monacoin data directory (usually `~/.monacoin` on Linux, `%appdata%\Bitcoin\` on Windows,
 or `~/Library/Application Support/Bitcoin` on Mac OS X).
 
-bitcoind must be running and must have finished downloading the blockchain **before** running *insight API*.
+monacoind must be running and must have finished downloading the blockchain **before** running *insight API*.
 
 
 * **Node.js v0.10.x** - Download and Install [Node.js](http://www.nodejs.org/download/).
@@ -37,7 +37,7 @@ bitcoind must be running and must have finished downloading the blockchain **bef
 
   To install Insight API, clone the main repository:
 
-    $ git clone https://github.com/bitpay/insight-api && cd insight-api
+    $ git clone https://github.com/visvirial/insight-monacore-api && cd insight-api
 
   Install dependencies:
 
@@ -61,13 +61,13 @@ bitcoind must be running and must have finished downloading the blockchain **bef
 All configuration is specified in the [config](config/) folder, particularly the [config.js](config/config.js) file. There you can specify your application name and database name. Certain configuration values are pulled from environment variables if they are defined:
 
 ```
-BITCOIND_HOST         # RPC bitcoind host
-BITCOIND_PORT         # RPC bitcoind Port
-BITCOIND_P2P_HOST     # P2P bitcoind Host (will default to BITCOIND_HOST, if specified)
-BITCOIND_P2P_PORT     # P2P bitcoind Port
-BITCOIND_USER         # RPC username
-BITCOIND_PASS         # RPC password
-BITCOIND_DATADIR      # bitcoind datadir. 'testnet3' will be appended automatically if testnet is used. NEED to finish with '/'. e.g: `/vol/data/`
+MONACOIND_HOST         # RPC monacoind host
+MONACOIND_PORT         # RPC monacoind Port
+MONACOIND_P2P_HOST     # P2P monacoind Host (will default to BITCOIND_HOST, if specified)
+MONACOIND_P2P_PORT     # P2P monacoind Port
+MONACOIND_USER         # RPC username
+MONACOIND_PASS         # RPC password
+MONACOIND_DATADIR      # monacoind datadir. 'testnet3' will be appended automatically if testnet is used. NEED to finish with '/'. e.g: `/vol/data/`
 INSIGHT_NETWORK [= 'livenet' | 'testnet']
 INSIGHT_DB            # Path where to store insight's internal DB. (defaults to $HOME/.insight)
 INSIGHT_SAFE_CONFIRMATIONS=6  # Nr. of confirmation needed to start caching transaction information   
@@ -79,33 +79,33 @@ ENABLE_HTTPS # if "true" it will server using SSL/HTTPS
 
 ```
 
-Make sure that bitcoind is configured to [accept incoming connections using 'rpcallowip'](https://en.bitcoin.it/wiki/Running_Bitcoin).
+Make sure that monacoind is configured to [accept incoming connections using 'rpcallowip'](https://en.bitcoin.it/wiki/Running_Bitcoin).
 
 In case the network is changed (testnet to livenet or vice versa) levelDB database needs to be deleted. This can be performed running:
 ```util/sync.js -D``` and waiting for *insight* to synchronize again.  Once the database is deleted, the sync.js process can be safely interrupted (CTRL+C) and continued from the synchronization process embedded in main app.
 
 ## Synchronization
 
-The initial synchronization process scans the blockchain from the paired bitcoind server to update addresses and balances. *insight-api* needs exactly one trusted bitcoind node to run. This node must have finished downloading the blockchain before running *insight-api*.
+The initial synchronization process scans the blockchain from the paired monacoind server to update addresses and balances. *insight-api* needs exactly one trusted monacoind node to run. This node must have finished downloading the blockchain before running *insight-api*.
 
 While *insight* is synchronizing the website can be accessed (the sync process is embedded in the webserver), but there may be missing data or incorrect balances for addresses. The 'sync' status is shown at the `/api/sync` endpoint.
 
-The blockchain can be read from bitcoind's raw `.dat` files or RPC interface. 
+The blockchain can be read from monacoind's raw `.dat` files or RPC interface. 
 Reading the information from the `.dat` files is much faster so it's the
 recommended (and default) alternative. `.dat` files are scanned in the default
-location for each platform (for example, `~/.bitcoin` on Linux). In case a
+location for each platform (for example, `~/.monacoin` on Linux). In case a
 non-standard location is used, it needs to be defined (see the Configuration section).
 As of June 2014, using `.dat` files the sync process takes 9 hrs.
 for livenet and 30 mins. for testnet.
 
 While synchronizing the blockchain, *insight-api* listens for new blocks and
-transactions relayed by the bitcoind node. Those are also stored on *insight-api*'s database.
+transactions relayed by the monacoind node. Those are also stored on *insight-api*'s database.
 In case *insight-api* is shutdown for a period of time, restarting it will trigger
 a partial (historic) synchronization of the blockchain. Depending on the size of
 that synchronization task, a reverse RPC or forward `.dat` syncing strategy will be used.
 
-If bitcoind is shutdown, *insight-api* needs to be stopped and restarted
-once bitcoind is restarted.
+If monacoind is shutdown, *insight-api* needs to be stopped and restarted
+once monacoind is restarted.
 
 ### Syncing old blockchain data manually
 
@@ -142,7 +142,7 @@ To run the tests
 ```$ grunt test```
 
 
-Contributions and suggestions are welcome at [insight-api github repository](https://github.com/bitpay/insight-api).
+Contributions and suggestions are welcome at [insight-api github repository](https://github.com/visvirial/insight-monacore-api).
 
 ## Caching schema
 
@@ -284,7 +284,7 @@ POST response:
   /api/peer
 ```
 
-### Status of the bitcoin network
+### Status of the monacoin network
 ```
   /api/status?q=xxx
 ```
@@ -323,7 +323,7 @@ Sample output:
 }
 ```
 
-'<bitcoinAddress>': new transaction concerning <bitcoinAddress> received from network. This event is published in the '<bitcoinAddress>' room.
+'<monacoinAddress>': new transaction concerning <monacoinAddress> received from network. This event is published in the '<monacoinAddress>' room.
 
 'status': every 1% increment on the sync task, this event will be triggered. This event is published in the 'sync' room.
 

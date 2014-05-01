@@ -23,14 +23,15 @@ if (process.env.INSIGHT_NETWORK === 'livenet') {
   env = 'livenet';
   db = home;
   port = '3000';
-  b_port = '8332';
-  p2p_port = '8333';
-} else {
+  b_port = '9402';
+  p2p_port = '9401';
+}
+else {
   env = 'testnet';
   db = home + '/testnet';
   port = '3001';
-  b_port = '18332';
-  p2p_port = '18333';
+  b_port = '19402';
+  p2p_port = '19401';
 }
 
 
@@ -48,14 +49,14 @@ switch (process.env.NODE_ENV) {
 
 var network = process.env.INSIGHT_NETWORK || 'testnet';
 
-var dataDir = process.env.BITCOIND_DATADIR;
+var dataDir = process.env.MONACOIND_DATADIR;
 var isWin = /^win/.test(process.platform);
 var isMac = /^darwin/.test(process.platform);
 var isLinux = /^linux/.test(process.platform);
 if (!dataDir) {
-  if (isWin) dataDir = '%APPDATA%\\Bitcoin\\';
-  if (isMac) dataDir = process.env.HOME + '/Library/Application Support/Bitcoin/';
-  if (isLinux) dataDir = process.env.HOME + '/.bitcoin/';
+  if (isWin) dataDir = '%APPDATA%\\Monacoin\\';
+  if (isMac) dataDir = process.env.HOME + '/Library/Application Support/Monacoin/';
+  if (isLinux) dataDir = process.env.HOME + '/.monacoin/';
 }
 dataDir += network === 'testnet' ? 'testnet3' : '';
 
@@ -64,13 +65,13 @@ var ignoreCache = process.env.INSIGHT_IGNORE_CACHE || 0;
 
 
 var bitcoindConf = {
-  protocol: process.env.BITCOIND_PROTO || 'http',
-  user: process.env.BITCOIND_USER || 'user',
-  pass: process.env.BITCOIND_PASS || 'pass',
-  host: process.env.BITCOIND_HOST || '127.0.0.1',
-  port: process.env.BITCOIND_PORT || b_port,
-  p2pPort: process.env.BITCOIND_P2P_PORT || p2p_port,
-  p2pHost: process.env.BITCOIND_P2P_HOST || process.env.BITCOIND_HOST || '127.0.0.1',
+  protocol: process.env.MONACOIND_PROTO || 'http',
+  user:     process.env.MONACOIND_USER || 'user',
+  pass:     process.env.MONACOIND_PASS || 'pass',
+  host:     process.env.MONACOIND_HOST || '127.0.0.1',
+  port:     process.env.MONACOIND_PORT || b_port,
+  p2pPort:  process.env.MONACOIND_P2P_PORT || p2p_port,
+  p2pHost:  process.env.MONACOIND_P2P_HOST || process.env.MONACOIND_HOST || '127.0.0.1',
   dataDir: dataDir,
   // DO NOT CHANGE THIS!
   disableAgent: true
