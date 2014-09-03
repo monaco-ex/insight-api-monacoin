@@ -45,7 +45,10 @@ exports.index = function(req, res) {
   if (bitpayBBB !== null && monatrBTCMONA !== null && currentTime <= (timestamp + delay)) {
     res.jsonp({
       status: 200,
-      data: { bitpayBBB: bitpayBBB }
+      data: {
+        bitpayBBB: bitpayBBB,
+        monatrBTCMONA: monatrBTCMONA,
+      }
     });
   }else{
   // Fetch bitpayBBB.
