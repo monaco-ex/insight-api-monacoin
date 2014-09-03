@@ -1,3 +1,4 @@
+// vim: set expandtab :
 'use strict';
 
 var config = require('../../config/config');
@@ -5,7 +6,8 @@ var config = require('../../config/config');
 // Set the initial vars
 var timestamp = +new Date(),
     delay = config.currencyRefresh * 60000,
-    bitstampRate = 0;
+    bitpayBBB = null,
+    monatrBTCMONA = null;
 
 exports.index = function(req, res) {
 
@@ -40,21 +42,27 @@ exports.index = function(req, res) {
 
   // Init
   var currentTime = +new Date();
-  if (bitstampRate === 0 || currentTime >= (timestamp + delay)) {
-    timestamp = currentTime;
-
-    _request('https://www.bitstamp.net/api/ticker/', function(err, data) {
-      if (!err) bitstampRate = parseFloat(JSON.parse(data).last);
-
-      res.jsonp({
-        status: 200,
-        data: { bitstamp: bitstampRate }
-      });
-    });
-  } else {
+  if (bitpayBBB !== null && monatrBTCMONA !== null && currentTime <= (timestamp + delay)) {
     res.jsonp({
       status: 200,
-      data: { bitstamp: bitstampRate }
+      data: { bitpayBBB: bitpayBBB }
+    });
+  }else{
+  // Fetch bitpayBBB.
+    timestamp = currentTime;
+
+    _request('https://bitpay.com/api/rates', function(err, data) {
+      if (!err) bitpayBBB = JSON.parse(data);
+      _request('https://api.monatr.jp/ticker?market=BTC_MONA', function(err, data) {
+        if (!err) monatrBTCMONA = JSON.parse(data);
+        res.jsonp({
+          status: 200,
+          data: {
+            bitpayBBB: bitpayBBB,
+            monatrBTCMONA: monatrBTCMONA,
+          }
+        });
+      });
     });
   }
 };
