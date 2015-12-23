@@ -34,14 +34,14 @@ program.on('--help', function() {
 \tINSIGHT_DB (Database Path):  %s\n\
 \tINSIGHT_SAFE_CONFIRMATIONS (Safe Confirmations):  %s\n\
 \tINSIGHT_IGNORE_CACHE (Ignore Cache):  %s\n\
- # Bicoind Connection configuration:\n\
-\tRPC Username: %s\t\tBITCOIND_USER\n\
-\tRPC Password: %s\tBITCOIND_PASS\n\
-\tRPC Protocol: %s\t\tBITCOIND_PROTO\n\
-\tRPC Host: %s\t\tBITCOIND_HOST\n\
-\tRPC Port: %s\t\t\tBITCOIND_PORT\n\
-\tP2P Port: %s\t\t\tBITCOIND_P2P_PORT\n\
-\tBITCOIND_DATADIR: %s\n\
+ # Monacoind Connection configuration:\n\
+\tRPC Username: %s\t\tMONACOIND_USER\n\
+\tRPC Password: %s\tMONACOIND_PASS\n\
+\tRPC Protocol: %s\t\tMONACOIND_PROTO\n\
+\tRPC Host: %s\t\tMONACOIND_HOST\n\
+\tRPC Port: %s\t\t\tMONACOIND_PORT\n\
+\tP2P Port: %s\t\t\tMONACOIND_P2P_PORT\n\
+\tMONACOIND_DATADIR: %s\n\
 \t%s\n\
 \nChange setting by assigning the enviroment variables above. Example:\n\
  $ INSIGHT_NETWORK="testnet" BITCOIND_HOST="123.123.123.123" ./insight.js\
