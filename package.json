@@ -1,7 +1,7 @@
 {
-  "name": "insight-api",
-  "description": "A Bitcoin blockchain REST and web socket API service for Bitcore Node.",
-  "version": "0.4.3",
+  "name": "insight-api-monacoin",
+  "description": "A Monacoin blockchain REST and web socket API service for Monacore Node.",
+  "version": "0.4.3-monacoex-1",
   "repository": "git://github.com/bitpay/insight-api.git",
   "contributors": [
     {
@@ -35,6 +35,10 @@
     {
       "name": "Braydon Fuller",
       "email": "braydon@bitpay.com"
+    },
+    {
+      "name": "Cryptcoin Junkey",
+      "email": "cryptcoin.junkey@gmail.com"
     }
   ],
   "bugs": {
@@ -60,6 +64,7 @@
   "main": "lib",
   "bitcoreNode": "lib",
   "dependencies": {
+    "@cryptcoin-junkey/coininfo": "^1.0.1-monacoex-1",
     "async": "*",
     "bitcore-lib": "^0.13.7",
     "bitcore-message": "^1.0.1",
