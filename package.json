@@ -64,7 +64,7 @@
   "main": "lib",
   "bitcoreNode": "lib",
   "dependencies": {
-    "@cryptcoin-junkey/coininfo": "^1.0.1-monacoex-1",
+    "@monaco-ex/coininfo": "^2.2.0-monacoex-1",
     "@monaco-ex/bitcore-lib": "^0.14.0-segwit-1",
     "@monaco-ex/bitcore-message": "^1.0.3-segwit-1",
     "async": "*",
