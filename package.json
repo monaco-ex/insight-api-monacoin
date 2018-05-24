@@ -1,7 +1,7 @@
 {
   "name": "insight-api-monacoin",
   "description": "A Monacoin blockchain REST and web socket API service for Monacore Node.",
-  "version": "0.4.3-monacoex-9",
+  "version": "0.4.3-monacoex-10",
   "repository": "git://github.com/bitpay/insight-api.git",
   "contributors": [
     {
