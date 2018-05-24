@@ -238,5 +238,26 @@
     "searchStrings":[
       "/BTCC/"
     ]
+  },
+  {
+    "poolName":"EASY MINE",
+    "url":"https://easymine.online/",
+    "searchStrings":[
+      "/EasyMine.online/"
+    ]
+  },
+  {
+    "poolName":"MINING POOL HUB",
+    "url":"https://miningpoolhub.com/",
+    "searchStrings":[
+      "/mph/"
+    ]
+  },
+  {
+    "poolName":"zpool",
+    "url":"https://www.zpool.ca/",
+    "searchStrings":[
+      "www.zpool.ca"
+    ]
   }
 ]
