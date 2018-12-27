@@ -257,7 +257,84 @@
     "poolName":"zpool",
     "url":"https://www.zpool.ca/",
     "searchStrings":[
-      "www.zpool.ca"
+      "zpool.ca"
+    ]
+  },
+  {
+    "poolName":"VIP Pool",
+    "url":"https://vippool.net/",
+    "searchStrings":[
+      "/VIP Pool - "
+    ]
+  },
+  {
+    "poolName":"NLPOOL.NL",
+    "url":"https://www.nlpool.nl/",
+    "searchStrings":[
+      "NLPOOL.NL"
+    ]
+  },
+  {
+    "poolName":"A Hash Pool",
+    "url":"https://www.ahashpool.com/",
+    "searchStrings":[
+      "ahashpool"
+    ]
+  },
+  {
+    "poolName":"人のプール",
+    "url":"https://mining.zinntikumugai.xyz/",
+    "searchStrings":[
+      "mining.zinntikumugai.xyz"
+    ]
+  },
+  {
+    "poolName":"EMCD",
+    "url":"https://emcd.io/",
+    "searchStrings":[
+      "EMCD"
+    ]
+  },
+  {
+    "poolName":"BSOD.PW",
+    "url":"https://bsod.pw/",
+    "searchStrings":[
+      "bsod.solo.1"
+    ]
+  },
+  {
+    "poolName":"Waterpark",
+    "url":"https://www.waterparkmining.com/",
+    "searchStrings":[
+      "Waterpark"
+    ]
+  },
+  {
+    "poolName":"MCCL.pw",
+    "url":"https://mccl.pw/",
+    "searchStrings":[
+      "/mccl.pw/"
+    ]
+  },
+  {
+    "poolName":"COINFOUNDRY.ORG",
+    "url":"https://coinfoundry.org/",
+    "searchStrings":[
+      "/MiningCore/"
+    ]
+  },
+  {
+    "poolName":"Mining-Dutch",
+    "url":"https://www.mining-dutch.nl/",
+    "searchStrings":[
+      "/mining-dutch/"
+    ]
+  },
+  {
+    "poolName":"Miningbeaver",
+    "url":"https://miningbeaver.ga/",
+    "searchStrings":[
+      "/MiningBeaver/"
     ]
   }
 ]
